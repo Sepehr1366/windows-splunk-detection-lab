@@ -1,47 +1,39 @@
 # Windows Splunk Detection Lab
 
+A hands-on detection engineering lab focused on collecting Windows process telemetry with Sysmon, ingesting the data into Splunk, and investigating suspicious PowerShell activity.
+
 ## Overview
 
-A hands-on cybersecurity detection engineering lab focused on Windows process creation and PowerShell activity using Splunk.
+This lab demonstrates a basic Windows security monitoring and detection workflow:
 
-## Objectives
+1. Configure a Windows endpoint with Sysmon.
+2. Verify that Splunk and Sysmon are running.
+3. Generate Windows process activity.
+4. Ingest the telemetry into Splunk.
+5. Identify Windows process creation events.
+6. Investigate suspicious PowerShell execution.
+7. Use Splunk Search Processing Language (SPL) to isolate relevant events.
 
-- Ingest Windows security telemetry into Splunk
-- Search and analyze Windows Event ID 4688
-- Detect suspicious PowerShell execution
-- Write SPL detection queries
-- Investigate process, parent process, user, and host activity
-- Build a foundation for security alerting and threat hunting
+The goal is to demonstrate the practical workflow of moving from **endpoint telemetry → SIEM ingestion → investigation → detection**.
 
-## Tools
+---
 
-- Splunk Enterprise
-- Windows
-- PowerShell
-- Windows Event ID 4688
-- Sysmon / Windows process telemetry
-- SPL (Search Processing Language)
+## Lab Environment
 
-## Detection Scenario
+| Component | Environment |
+|---|---|
+| Operating System | Windows 11 Pro |
+| SIEM | Splunk Enterprise |
+| Endpoint Telemetry | Sysmon |
+| Query Language | Splunk SPL |
+| Architecture | Windows endpoint → Splunk |
 
-The lab investigates suspicious PowerShell execution using:
+---
 
-- PowerShell
-- `-NoProfile`
-- `-EncodedCommand`
-- Process creation telemetry
-- Parent process information
+## 1. Verify Windows Environment
 
-## Investigation Example
+The Windows operating system was verified using PowerShell:
 
-The lab identified a PowerShell process executed from:
-
-`C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
-
-The observed command line contained an encoded PowerShell command.
-
-## Status
-
-Project 2 — Detection Engineering Lab
-
-Work in progress.
+```powershell
+Get-CimInstance Win32_OperatingSystem |
+    Select-Object Caption, Version
