@@ -28,28 +28,26 @@ The goal is to demonstrate the practical workflow of moving from **endpoint tele
 | Query Language | Splunk SPL |
 | Architecture | Windows endpoint → Splunk |
 
----
-
 ## 1. Verify Windows Environment
 
 The Windows operating system was verified using PowerShell:
 
-powershell
+```powershell
 Get-CimInstance Win32_OperatingSystem |
     Select-Object Caption, Version
 ---
 ## 2. Verify Splunk and Sysmon Services
 
 The Splunk and Sysmon services were checked to confirm that both
-components were running correctly.
+components were running correctly:
 
-powershell
+```powershell
 Get-Service | Where-Object {$_.Name -match "Splunk|Sysmon"}
 ---
 ##3. Verify Sysmon Telemetry
 
 Recent Sysmon operational events were queried to confirm that Windows
 endpoint telemetry was being generated:
-powershell
+```powershell
 Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 5 |
     Select-Object TimeCreated, Id, ProviderName
