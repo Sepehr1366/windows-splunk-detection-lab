@@ -27,7 +27,7 @@ The goal is to demonstrate the practical workflow of moving from **endpoint tele
 | Endpoint Telemetry | Sysmon |
 | Query Language | Splunk SPL |
 | Architecture | Windows endpoint → Splunk |
-
+---
 ## 1. Verify Windows Environment
 
 The Windows operating system was verified using PowerShell:
