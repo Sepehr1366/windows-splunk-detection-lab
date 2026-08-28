@@ -44,7 +44,7 @@ components were running correctly:
 ```powershell
 Get-Service | Where-Object {$_.Name -match "Splunk|Sysmon"}
 ````
-##3. Verify Sysmon Telemetry
+## 3. Verify Sysmon Telemetry
 
 Recent Sysmon operational events were queried to confirm that Windows
 endpoint telemetry was being generated:
