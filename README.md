@@ -38,9 +38,4 @@ The Windows operating system was verified using PowerShell:
 Get-CimInstance Win32_OperatingSystem |
     Select-Object Caption, Version
 ---
-## 2. Verify Splunk and Sysmon
 
-The Splunk and Sysmon services were checked with:
-```powershell
-Get-Service |
-    Where-Object {$_.Name -match "Splunk|Sysmon"}
