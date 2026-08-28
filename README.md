@@ -49,5 +49,5 @@ Get-Service | Where-Object {$_.Name -match "Splunk|Sysmon"}
 Recent Sysmon operational events were queried to confirm that Windows
 endpoint telemetry was being generated:
 ```powershell
-Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 5 |
-    Select-Object TimeCreated, Id, ProviderName
+index=* EventID=4688 Image="*powershell.exe"
+| table _time host User Image CommandLine ParentImage
